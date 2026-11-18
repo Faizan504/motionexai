@@ -1,0 +1,29 @@
+{
+  "name": "motionexai-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MotionexAI website: industry-specific AI agents, automation systems and SaaS platforms.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": { "node": ">=18.18.0" },
+  "dependencies": {
+    "gsap": "3.12.5",
+    "lenis": "1.1.13",
+    "next": "15.5.29",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "@types/three": "0.160.0",
+    "typescript": "5.7.2"
+  }
+}
