@@ -10,8 +10,13 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
-  "engines": { "node": ">=18.18.0" },
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/sora": "5.3.0",
     "gsap": "3.12.5",
     "lenis": "1.1.13",
     "next": "15.5.29",

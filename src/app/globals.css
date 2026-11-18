@@ -21,9 +21,9 @@
   --radius:20px;
   --radius-sm:12px;
   --max:1240px;
-  --font-h:var(--ff-sora),'Sora',system-ui,sans-serif;
-  --font-b:var(--ff-inter),'Inter',system-ui,sans-serif;
-  --font-m:var(--ff-mono),'JetBrains Mono',ui-monospace,monospace;
+  --font-h:'Sora',system-ui,sans-serif;
+  --font-b:'Inter',system-ui,sans-serif;
+  --font-m:'JetBrains Mono',ui-monospace,monospace;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box}

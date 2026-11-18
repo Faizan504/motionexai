@@ -62,7 +62,7 @@ trailing-slash URLs matching the proposed hierarchy (`/industries/construction-a
 ```
 src/
   app/
-    layout.tsx            fonts (self-hosted via next/font), metadata
+    layout.tsx            self-hosted fonts (@fontsource: Sora, Inter, JetBrains Mono), metadata
     page.tsx              homepage composition + JSON-LD
     globals.css           design system (ported 1:1 from the approved prototype)
     api/leads/route.ts    lead capture endpoint
