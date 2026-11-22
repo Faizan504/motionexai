@@ -25,8 +25,8 @@ function LogLine({ entry }: { entry: LogEntry }) {
 }
 
 /** 6. Interactive demonstrations — animated agent workflow + console log, on synthetic data */
-export default function DemoCenter() {
-  const [mode, setMode] = useState(0);
+export default function DemoCenter({ initialKey }: { initialKey?: string } = {}) {
+  const [mode, setMode] = useState(() => Math.max(0, DEMOS.findIndex((x) => x.key === initialKey)));
   const [run, setRun] = useState(0);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const flowRef = useRef<HTMLDivElement>(null);

@@ -554,7 +554,7 @@ export const FAQS = [
   },
 ];
 
-export function Faq() {
+export function Faq({ items = FAQS, intro }: { items?: { q: string; a: string }[]; intro?: string }) {
   return (
     <section id="faq" data-morph="3.8" data-shift="0" aria-labelledby="fq-title">
       <div className="container faq-wrap">
@@ -563,13 +563,13 @@ export function Faq() {
           <h2 id="fq-title">
             Questions, <span className="grad-text">answered</span>
           </h2>
-          <p>Technical and commercial answers. For anything industry-specific, ask our assistant or an engineer.</p>
-          <a href="#contact" className="btn btn-ghost" style={{ marginTop: 28 }}>
+          <p>{intro || 'Technical and commercial answers. For anything industry-specific, ask our assistant or an engineer.'}</p>
+          <a href="/contact/" data-contact-link="" className="btn btn-ghost" style={{ marginTop: 28 }}>
             Talk to an expert
           </a>
         </div>
         <div className="faq-list">
-          {FAQS.map((f, i) => (
+          {items.map((f, i) => (
             <details className="faq glass" open={i === 0} key={f.q}>
               <summary>
                 {f.q}

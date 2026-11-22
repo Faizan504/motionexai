@@ -197,8 +197,8 @@ export default function Header() {
                           <h5>Explore AI solutions for your industry</h5>
                           <p>Challenges, AI solutions, demos and next steps for {INDUSTRIES.length} sectors.</p>
                         </div>
-                        <a href="#industries" className="btn btn-ghost btn-sm">
-                          Open explorer <Icon id="i-arrow" />
+                        <a href="/industries/" className="btn btn-ghost btn-sm">
+                          All industries <Icon id="i-arrow" />
                         </a>
                       </div>
                     </div>
@@ -239,7 +239,7 @@ export default function Header() {
                           <h5>See industry AI in action</h5>
                           <p>BIM issues, hiring workflows, property advice, invoices and more, all on synthetic data.</p>
                         </div>
-                        <a href="#demos" className="btn btn-ghost btn-sm">
+                        <a href="/demos/" className="btn btn-ghost btn-sm">
                           Try demos <Icon id="i-arrow" />
                         </a>
                       </div>
@@ -248,17 +248,17 @@ export default function Header() {
                 </div>
               </li>
               <li>
-                <a className="menu-link" href="#demos">
+                <a className="menu-link" href="/demos/">
                   Demos
                 </a>
               </li>
               <li>
-                <a className="menu-link" href="#products">
+                <a className="menu-link" href="/products/">
                   Products
                 </a>
               </li>
               <li>
-                <a className="menu-link" href="#insights">
+                <a className="menu-link" href="/insights/">
                   Insights
                 </a>
               </li>
@@ -271,10 +271,10 @@ export default function Header() {
           </nav>
 
           <div className="nav-cta">
-            <a href="#industries" className="btn btn-ghost btn-sm">
+            <a href="/industries/" className="btn btn-ghost btn-sm">
               Find Your Industry
             </a>
-            <a href="#contact" className="btn btn-primary btn-sm">
+            <a href="/contact/" data-contact-link="" className="btn btn-primary btn-sm">
               Discuss Your Project <Icon id="i-arrow" />
             </a>
             <button
@@ -318,11 +318,11 @@ export default function Header() {
               ))}
           </div>
         </details>
-        <a href="#demos">Demos</a>
-        <a href="#products">Products</a>
-        <a href="#insights">Insights</a>
+        <a href="/demos/">Demos</a>
+        <a href="/products/">Products</a>
+        <a href="/insights/">Insights</a>
         <a href="/about/">Company</a>
-        <a href="#contact" className="btn btn-primary">
+        <a href="/contact/" data-contact-link="" className="btn btn-primary">
           Discuss Your Project <Icon id="i-arrow" />
         </a>
       </div>

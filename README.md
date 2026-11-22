@@ -11,15 +11,18 @@ Requirements: **Node.js 18.18+** (Node 20 LTS recommended) and npm.
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000 (development, hot reload)
+npm run dev          # http://localhost:3001 (development, hot reload)
 ```
 
 Production mode:
 
 ```bash
 npm run build
-npm start            # http://localhost:3000
+npm start            # http://localhost:3001
 ```
+
+> **Windows PowerShell:** if you see *"npm.ps1 cannot be loaded because running scripts is disabled"*,
+> use `npm.cmd` instead of `npm` (e.g. `npm.cmd run dev`), or run the commands from Command Prompt.
 
 Optional: copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` / `LEAD_WEBHOOK_URL`.
 

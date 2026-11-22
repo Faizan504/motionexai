@@ -51,7 +51,8 @@ export default function Footer() {
               <li><a href="/services/ai-automation/">AI Automation</a></li>
               <li><a href="/services/generative-ai/">Document Intelligence</a></li>
               <li><a href="/services/saas-development/">SaaS Development</a></li>
-              <li><a href="/products/careerflix/">CareerFlix</a></li>
+              <li><a href="/services/">All solutions</a></li>
+              <li><a href="/products/">Products</a></li>
               <li><a href="/demos/">Demo Center</a></li>
             </ul>
           </div>
@@ -62,6 +63,7 @@ export default function Footer() {
               <li><a href="/about/">About</a></li>
               <li><a href="/insights/">Insights</a></li>
               <li><a href="/careers/">Careers</a></li>
+              <li><a href="/partnerships/">Partnerships</a></li>
               <li><a href="/contact/">{CONTACT.location}</a></li>
               <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
               <li><a href="/book-consultation/">Book a consultation</a></li>

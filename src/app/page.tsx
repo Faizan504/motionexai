@@ -1,11 +1,4 @@
-import IconSprite from '@/components/layout/IconSprite';
-import Background from '@/components/layout/Background';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import Assistant from '@/components/layout/Assistant';
-import MotionController from '@/components/layout/MotionController';
-import WebGLScene from '@/components/layout/WebGLScene';
-import Icon from '@/components/ui/Icon';
+import { Loader } from '@/components/layout/Background';
 import { About, Hero, IndustryMarquee } from '@/components/home/Hero';
 import { Challenges, Sectors } from '@/components/home/Sectors';
 import IndustryExplorer from '@/components/home/IndustryExplorer';
@@ -43,12 +36,7 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
-      <IconSprite />
-      <Background />
-      <Header />
+      <Loader />
 
       <main id="main">
         <Hero />
@@ -69,17 +57,6 @@ export default function HomePage() {
         <Faq />
         <Contact />
       </main>
-
-      <Footer />
-      <Assistant />
-      <div className="m-cta">
-        <a href="#contact" className="btn btn-primary">
-          Discuss Your Project <Icon id="i-arrow" />
-        </a>
-      </div>
-
-      <MotionController />
-      <WebGLScene />
     </>
   );
 }

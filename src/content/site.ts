@@ -59,7 +59,7 @@ export const ASSISTANT_REPLIES: Record<string, string> = {
     'We build AI solutions for 14 industries. Our priority focus is Construction & AEC, Recruitment & HR and Real Estate, followed by Finance, Retail, Logistics, Healthcare and Education, plus six more.',
   aec: 'For construction and AEC we build BIM automation agents, engineering document AI, AI quantity takeoff, project reporting and BIM coordination intelligence. You can try the BIM issue demo on this page.',
   hr: 'For recruitment and HR: AI recruitment agents, resume intelligence, candidate matching, AI interview assistants and HR workflow automation, including our CareerFlix platform. Recruiters always make the final decision.',
-  book: 'Happy to help! Share your industry and requirements in the inquiry form below, and a solutions engineer will reach out within one business day.',
+  book: 'Happy to help! Share your industry and requirements in the project inquiry form, and a solutions engineer will reach out within one business day.',
   fallback:
-    "Good question. I'll connect you with a solutions engineer for the specifics. Meanwhile, the industry explorer on this page shows solutions and demos for your sector.",
+    "Good question. I'll connect you with a solutions engineer for the specifics. Meanwhile, the Industries page shows solutions and demos for your sector.",
 };

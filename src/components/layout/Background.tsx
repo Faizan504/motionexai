@@ -1,4 +1,4 @@
-/** Fixed decorative layers behind the page (CSS orbs, grid, WebGL canvas, noise, cursor glow) + preloader. */
+/** Fixed decorative layers behind the page (CSS orbs, grid, WebGL canvas, noise, cursor glow). */
 export default function Background() {
   return (
     <>
@@ -10,20 +10,25 @@ export default function Background() {
       <canvas id="webgl" aria-hidden="true"></canvas>
       <div className="noise" aria-hidden="true"></div>
       <div className="cursor-glow" aria-hidden="true"></div>
+    </>
+  );
+}
 
-      <div className="loader" aria-hidden="true">
-        <div className="loader-inner">
-          <svg className="loader-mark">
-            <use href="#i-logo" />
-          </svg>
-          <div className="loader-bar">
-            <i></i>
-          </div>
-          <div className="loader-txt">
-            INITIALIZING <span className="lp">0</span>%
-          </div>
+/** Preloader: rendered on the homepage only, so inner pages appear instantly. */
+export function Loader() {
+  return (
+    <div className="loader" aria-hidden="true">
+      <div className="loader-inner">
+        <svg className="loader-mark">
+          <use href="#i-logo" />
+        </svg>
+        <div className="loader-bar">
+          <i></i>
+        </div>
+        <div className="loader-txt">
+          INITIALIZING <span className="lp">0</span>%
         </div>
       </div>
-    </>
+    </div>
   );
 }

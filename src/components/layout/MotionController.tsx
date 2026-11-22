@@ -17,6 +17,8 @@ const $$ = <T extends Element = HTMLElement>(s: string, c: ParentNode = document
 export default function MotionController() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    // Shared across all routes: not every page has every animated section
+    gsap.config({ nullTargetWarn: false });
     const reduce = prefersReducedMotion();
     const cleanups: (() => void)[] = [];
     const on = <K extends keyof WindowEventMap>(t: Window, ev: K, fn: (e: WindowEventMap[K]) => void, opts?: AddEventListenerOptions) => {
@@ -59,37 +61,54 @@ export default function MotionController() {
         return;
       }
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-      tl.from('.hero h1 .w', { yPercent: 115, rotate: 4, duration: 1.4, stagger: 0.08 })
-        .from('[data-hero]', { y: 30, opacity: 0, duration: 1.1, stagger: 0.1 }, '-=1.1')
-        .from('.float-card', { y: 60, opacity: 0, scale: 0.9, duration: 1.3, stagger: 0.14 }, '-=1.1')
-        .from('.header', { y: -30, opacity: 0, duration: 1, clearProps: 'transform,opacity' }, 0)
-        .add(() => {
-          runCounters($('.hero-trust'));
-          ringFill();
-        }, '-=.8');
+      if ($('.hero h1 .w')) tl.from('.hero h1 .w', { yPercent: 115, rotate: 4, duration: 1.4, stagger: 0.08 });
+      if ($('[data-hero]')) tl.from('[data-hero]', { y: 30, opacity: 0, duration: 1.1, stagger: 0.1 }, tl.duration() ? '-=1.1' : 0);
+      if ($('.float-card')) tl.from('.float-card', { y: 60, opacity: 0, scale: 0.9, duration: 1.3, stagger: 0.14 }, '-=1.1');
+      tl.from('.header', { y: -30, opacity: 0, duration: 1, clearProps: 'transform,opacity' }, 0).add(() => {
+        runCounters($('.hero-trust'));
+        ringFill();
+      }, '-=.8');
     };
 
-    /* ---------- Preloader ---------- */
+    /* ---------- Preloader (homepage only) ---------- */
     const loader = $('.loader');
-    const lp = $('.lp');
-    const lb = $('.loader-bar i');
-    let pct = 0;
-    const tick = setInterval(
-      () => {
-        pct = Math.min(100, pct + Math.random() * 22 + 8);
-        if (lp) lp.textContent = String(Math.floor(pct));
-        if (lb) lb.style.width = pct + '%';
-        if (pct >= 100) {
-          clearInterval(tick);
-          setTimeout(() => {
-            loader?.classList.add('done');
-            heroIntro();
-          }, 180);
-        }
-      },
-      reduce ? 10 : 90,
-    );
-    cleanups.push(() => clearInterval(tick));
+    if (loader) {
+      const lp = $('.lp');
+      const lb = $('.loader-bar i');
+      let pct = 0;
+      const tick = setInterval(
+        () => {
+          pct = Math.min(100, pct + Math.random() * 22 + 8);
+          if (lp) lp.textContent = String(Math.floor(pct));
+          if (lb) lb.style.width = pct + '%';
+          if (pct >= 100) {
+            clearInterval(tick);
+            setTimeout(() => {
+              loader.classList.add('done');
+              heroIntro();
+            }, 180);
+          }
+        },
+        reduce ? 10 : 90,
+      );
+      cleanups.push(() => clearInterval(tick));
+    } else {
+      heroIntro();
+    }
+
+    /* ---------- "Discuss your project" links: use the on-page form when there is one ---------- */
+    const onContact = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('[data-contact-link]');
+      if (!a) return;
+      const t = document.getElementById('contact');
+      if (!t) return;
+      e.preventDefault();
+      emit(EVENTS.closeOverlays);
+      if (lenis) lenis.scrollTo(t, { offset: -70 });
+      else t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    };
+    document.addEventListener('click', onContact);
+    cleanups.push(() => document.removeEventListener('click', onContact));
 
     /* ---------- Smooth scroll (Lenis) ---------- */
     let lenis: Lenis | null = null;

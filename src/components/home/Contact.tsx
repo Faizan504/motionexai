@@ -39,10 +39,20 @@ const shake = (el: HTMLElement | null) =>
  * Any element with [data-industry] (and optional [data-source]) pre-fills the industry and source
  * and scrolls here, so every industry CTA connects to this form.
  */
-export default function Contact() {
+export default function Contact({
+  page = 'Homepage',
+  defaultIndustry = '',
+  defaultServices = [],
+}: {
+  /** Label of the page the form sits on, recorded as the lead source */
+  page?: string;
+  /** Pre-selected industry name (e.g. on an industry landing page) */
+  defaultIndustry?: string;
+  defaultServices?: string[];
+}) {
   const [step, setStep] = useState(1);
-  const [form, setForm] = useState<Form>(initialForm);
-  const [source, setSource] = useState('Homepage');
+  const [form, setForm] = useState<Form>({ ...initialForm, industry: defaultIndustry, services: defaultServices });
+  const [source, setSource] = useState(page);
   const [errors, setErrors] = useState<{ industry?: boolean; email?: boolean }>({});
   const [briefLines, setBriefLines] = useState<[string, string][]>([]);
   const [submitError, setSubmitError] = useState('');
@@ -69,11 +79,11 @@ export default function Contact() {
         setStep(1);
         scrollToTarget('#contact');
       }
-      setSource('Homepage · ' + (a.dataset.source || 'Homepage'));
+      setSource(page + ' · ' + (a.dataset.source || 'CTA'));
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
-  }, []);
+  }, [page]);
 
   async function next() {
     if (step === 1 && !form.industry) {
@@ -199,7 +209,7 @@ export default function Contact() {
                   style={errors.industry ? { borderColor: '#f87171' } : undefined}
                   onChange={(e) => {
                     set('industry', e.target.value);
-                    setSource('Homepage · Inquiry form');
+                    setSource(page + ' · Inquiry form');
                   }}
                 >
                   <option value="">Select your industry</option>

@@ -108,12 +108,13 @@ export default function Assistant() {
             ) : m.link ? (
               <div key={m.id} className="msg bot">
                 <a
-                  href="#contact"
+                  href="/contact/"
                   style={{ color: 'var(--cyan)', fontWeight: 600 }}
                   onClick={(e) => {
+                    setOpen(false);
+                    if (!document.getElementById('contact')) return; // navigate to /contact/
                     e.preventDefault();
                     e.stopPropagation();
-                    setOpen(false);
                     scrollToTarget('#contact');
                   }}
                 >
